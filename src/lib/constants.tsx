@@ -9,7 +9,7 @@ export const PERSONAL = {
   displayName: 'MHD SHAREEF',
   roles: ['Software Engineer', 'AI Builder', 'Problem Solver'],
   tagline: 'Turning ideas into intelligent solutions, one line of code at a time.',
-  summary: `Final-year B.Tech Information Technology student with demonstrated experience building backend services, data pipelines, and AI-integrated systems using Python and JavaScript. Strong foundation in data structures, algorithms, and object-oriented design.`,
+  summary: `Recent B.Tech Information Technology graduate with demonstrated experience building backend services, data pipelines, and AI-integrated systems using Python and JavaScript. Strong foundation in data structures, algorithms, and object-oriented design.`,
   education: {
     degree: 'Bachelor of Technology in Information Technology',
     institution: 'MEA Engineering College, Kerala',

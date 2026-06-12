@@ -21,7 +21,7 @@ const pressStart2P = Press_Start_2P({
 export const metadata: Metadata = {
   title: "Mohamed Shereef | Software Engineer & AI Builder",
   description:
-    "Portfolio of Mohamed Shereef — Software Engineer, AI Builder, and B.Tech IT student. Explore my projects, skills, and achievements in an interactive pixel-art world.",
+    "Portfolio of Mohamed Shereef — Software Engineer, AI Builder, and recent IT graduate. Explore my projects, skills, and achievements in an interactive pixel-art world.",
   keywords: [
     "Mohamed Shereef",
     "Software Engineer",

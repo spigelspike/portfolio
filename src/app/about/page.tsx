@@ -199,7 +199,7 @@ export default function AboutPage() {
                       className="text-base sm:text-[1.05rem] leading-relaxed font-medium mb-10 ap-fade-up-3"
                       style={{ color: '#94A3B8', maxWidth: '42ch' }}
                     >
-                      Computer Science Student &amp; Developer passionate about building
+                      Recent IT Graduate &amp; Developer passionate about building
                       impactful digital experiences.
                     </p>
 
