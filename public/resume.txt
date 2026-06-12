@@ -1,0 +1,44 @@
++91-9061139031 
+Mohamed Shereef CH
+linkedin.com/in/mohamed-shereef
+mhdshareefch@gmail.com 
+Summary
+github.com/spigelspike 
+Final-year B.Tech Information Technology student (graduating May 2026) with demonstrated experience building backend
+services, data pipelines, and AI-integrated systems using Python and JavaScript. Strong foundation in data structures,
+algorithms, and object-oriented design. Experienced in designing scalable, modular architectures that handle multi-user
+workflows and asynchronous processing. Actively uses AI-assisted development tools (GitHub Copilot, LLM APIs) as part of
+daily engineering practice. Eager to work on distributed, high-throughput systems that operate at scale.
+Education
+• Bachelor of Technology in Information Technology
+MEA Engineering College, Kerala
+Technical Skills
+Expected May 2026
+• Languages: Python, JavaScript, TypeScript, Java (fundamentals), C (fundamentals)
+• Core CS: Data Structures & Algorithms, Object-Oriented Design, System Design Basics
+• Backend: FastAPI, Node.js, REST API Design, Asynchronous Processing, JWT Authentication, Supabase Edge Functions
+• Frontend: React, TypeScript, Tailwind CSS, HTML5, CSS3, Zustand, Vite
+• Databases: PostgreSQL, Supabase (Realtime, RLS, Auth), Firebase (NoSQL)
+• Cloud & DevOps: Docker, Git, GitHub Actions (CI/CD basics), Vercel, cloud-native/serverless concepts
+• AI/ML & Dev Tools: GitHub Copilot, LLM APIs (Gemini, OpenRouter), PyTorch, EfficientNet, Grad-CAM
+Projects
+• ACLInsight-Net — Deep Learning MRI Diagnostic System
+Python, PyTorch, EfficientNet-B4, Grad-CAM | GitHub– Trained a multi-plane MRI fusion model (axial, coronal, sagittal) for ACL tear detection using EfficientNet-B4– Achieved AUC ≈ 0.90 with 5-fold cross-validation; applied Grad-CAM explainability to visualize model decisions– Refactored full pipeline into 8 modular Python files following clean architecture and OOP principles– Resolved distributed training bottlenecks: CUDA OOM crashes, RAM overflow, and checkpoint continuation; preparing for
+IEEE publication
+• Book2Vision — AI Multimedia Generation Platform
+Python, FastAPI, NLP, REST APIs | GitHub– Engineered a modular backend pipeline (OCR → NLP → LLM → TTS) to convert books into audiobooks and visual
+summaries– Designed asynchronous task handling with FastAPI to support high-latency, long-form content processing at scale– Integrated multiple third-party APIs (ElevenLabs, Gemini, image generation) through a unified, documented service layer– Applied OOP design principles and modular service separation for maintainability and extensibility
+• CPMS —Campus Placement Management System
+JavaScript, HTML5, CSS3, PostgreSQL, Supabase | GitHub– Built a scalable, multi-role platform handling end-to-end placement workflows for students, recruiters, and admins– Designed normalized PostgreSQL schema with Row-Level Security (RLS) for fine-grained access control across user roles– Implemented RESTful backend services with secure session management, structured data handling, and PDF parsing– Integrated LLM APIs (Gemini, OpenRouter fallback) for automated resume scoring and candidate insight generation
+• Kallanum Policeum — Realtime Multiplayer Social Deduction Game React, TypeScript, Tailwind CSS, Vite, Zustand,
+Supabase, Ably, Agora, Vercel | GitHub– Built a browser-first, fully serverless multiplayer game (3–15 players) with zero backend server; all game logic runs in
+Supabase Edge Functions– Engineered realtime game state sync via Supabase Realtime, world chat via Ably, and WebRTC voice chat via Agora with
+server-generated tokens– Implemented cryptographically generated room codes, dynamic role assignment engine, MCQ deduction mechanic with bluff
+zones, and Web Audio API sound system– Enforced comprehensive security: RLS on all tables, JWT validation on every Edge Function, server-side role assignment with
+zero client trust, rate limiting, CSP headers, and CORS restrictions
+Relevant Coursework
+Data Structures & Algorithms, Object-Oriented Programming, Operating Systems, Computer Networks, Database Management
+Systems, Software Engineering, Machine Learning Fundamentals, System Design, Cryptography & Network Security
+Additional Information
+• Languages: English (professional), Malayalam (native), Hindi
+• Interests: Distributed systems, serverless architecture, AI-augmented engineering, scalable backend design
