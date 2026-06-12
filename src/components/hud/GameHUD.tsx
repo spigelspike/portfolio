@@ -23,7 +23,7 @@ const MOBILE_NAV_ITEMS = [
     href: "/about", 
     icon: (
       <div className="w-5 h-5 rounded-full overflow-hidden border border-[#FFD700] shadow-[0_0_5px_rgba(255,215,0,0.5)]">
-        <Image src="/assets/avatar.webp" alt="Profile" width={20} height={20} className="w-full h-full object-cover" />
+        <Image src="/assets/pfpj.jpg" alt="Profile" width={20} height={20} className="w-full h-full object-cover" unoptimized />
       </div>
     ) 
   },
