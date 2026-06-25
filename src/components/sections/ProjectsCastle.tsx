@@ -3,10 +3,121 @@
 // ProjectsCastle — Projects showcase
 // ============================================
 import { useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
 import PixelButton from "@/components/ui/PixelButton";
 import { PROJECTS, SECTIONS } from "@/lib/constants";
+
+function ProjectCard({ project, i }: { project: any; i: number }) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 });
+  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 });
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 40 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: i * 0.1 }}
+      className="flex-shrink-0 w-[280px] sm:w-[320px] snap-center perspective-1000"
+    >
+      <motion.div
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        whileHover={{ y: -8 }}
+        style={{
+          rotateX,
+          rotateY,
+          transformStyle: "preserve-3d",
+        }}
+        className="group/bento w-full h-full flex flex-col bg-[#12121f] border-2 border-game-border rounded-xl overflow-hidden shadow-[0_4px_0_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,215,0,0.2),_0_6px_0_rgba(0,0,0,0.5)] hover:border-game-accent transition-colors duration-300"
+      >
+        {/* Thumbnail Header */}
+        <div className="relative aspect-video w-full overflow-hidden border-b-2 border-game-border group-hover/bento:border-game-accent transition-colors">
+          {project.thumbnail ? (
+            <Image
+              src={project.thumbnail}
+              alt={project.title}
+              fill
+              sizes="(max-width: 768px) 320px, 280px"
+              className="object-cover transition-transform duration-700 group-hover/bento:scale-110 filter group-hover/bento:brightness-110"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center bg-[#1c1c28] transition-transform duration-700 group-hover/bento:scale-110">
+              <span className="text-6xl">{project.icon}</span>
+            </div>
+          )}
+          {/* Subtle Inner Shadow on Image */}
+          <div className="absolute inset-0 shadow-[inset_0_0_15px_rgba(0,0,0,0.5)] pointer-events-none" />
+        </div>
+
+        {/* Content Body */}
+        <div
+          style={{ transform: "translateZ(20px)" }}
+          className="p-5 flex flex-col flex-1 bg-gradient-to-b from-[#161623] to-[#0a0912]"
+        >
+          {/* Title */}
+          <h3 className="pixel-font text-[0.8rem] text-game-accent drop-shadow-md mb-3">
+            {project.title}
+          </h3>
+
+          {/* Description */}
+          <p className="text-[0.65rem] text-game-white leading-relaxed line-clamp-4 mb-4 flex-1">
+            {project.description}
+          </p>
+
+          {/* Tech Stack Pills */}
+          <div className="flex flex-wrap gap-1.5 mb-6">
+            {project.techStack.map((tech: string) => (
+              <span
+                key={tech}
+                className="px-2 py-1 bg-[#1a1a2e] border border-game-border rounded text-[0.5rem] text-game-cyan pixel-font uppercase tracking-wider shadow-sm"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          {/* Actions */}
+          <div className="mt-auto flex gap-3 pt-4 border-t border-game-border/30">
+            {project.liveUrl && (
+              <PixelButton variant="primary" size="sm" href={project.liveUrl}>
+                PLAY
+              </PixelButton>
+            )}
+            <PixelButton variant="secondary" size="sm" href={project.githubUrl}>
+              GITHUB
+            </PixelButton>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
 
 export default function ProjectsCastle() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -15,7 +126,10 @@ export default function ProjectsCastle() {
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
       const scrollAmount = direction === "left" ? -340 : 340;
-      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      scrollContainerRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -38,7 +152,7 @@ export default function ProjectsCastle() {
       <div className="p-4 sm:p-6 flex-1 flex flex-col relative group/carousel">
         {/* Left Scroll Button & Fade (Hidden on mobile) */}
         <div className="hidden md:flex absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-game-panel via-game-panel/80 to-transparent z-10 pointer-events-none items-center justify-start pl-2">
-          <button 
+          <button
             onClick={() => scroll("left")}
             className="pointer-events-auto opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 bg-game-dark/90 text-game-accent w-10 h-10 flex items-center justify-center rounded-full border-2 border-game-border hover:border-game-accent hover:bg-game-accent hover:text-black hover:scale-110 active:scale-95 shadow-[0_0_15px_rgba(0,0,0,0.8)]"
             aria-label="Scroll left"
@@ -49,7 +163,7 @@ export default function ProjectsCastle() {
 
         {/* Right Scroll Button & Fade (Hidden on mobile) */}
         <div className="hidden md:flex absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-game-panel via-game-panel/80 to-transparent z-10 pointer-events-none items-center justify-end pr-2">
-          <button 
+          <button
             onClick={() => scroll("right")}
             className="pointer-events-auto opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 bg-game-dark/90 text-game-accent w-10 h-10 flex items-center justify-center rounded-full border-2 border-game-border hover:border-game-accent hover:bg-game-accent hover:text-black hover:scale-110 active:scale-95 shadow-[0_0_15px_rgba(0,0,0,0.8)]"
             aria-label="Scroll right"
@@ -59,82 +173,12 @@ export default function ProjectsCastle() {
         </div>
 
         {/* Horizontal Scrolling Carousel */}
-        <div 
+        <div
           ref={scrollContainerRef}
           className="flex-1 flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 pt-4 px-10 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
           {PROJECTS.map((project, i) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group/bento flex-shrink-0 w-[280px] sm:w-[320px] flex flex-col snap-center bg-[#12121f] border-2 border-game-border rounded-xl overflow-hidden shadow-[0_4px_0_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(255,215,0,0.2),_0_6px_0_rgba(0,0,0,0.5)] hover:-translate-y-2 hover:border-game-accent transition-all duration-300"
-            >
-              {/* Thumbnail Header */}
-              <div className="relative aspect-video w-full overflow-hidden border-b-2 border-game-border group-hover/bento:border-game-accent transition-colors">
-                {project.thumbnail ? (
-                  <Image 
-                    src={project.thumbnail} 
-                    alt={project.title} 
-                    fill
-                    sizes="(max-width: 768px) 320px, 280px"
-                    className="object-cover transition-transform duration-700 group-hover/bento:scale-110 filter group-hover/bento:brightness-110" 
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-[#1c1c28] transition-transform duration-700 group-hover/bento:scale-110">
-                    <span className="text-6xl">{project.icon}</span>
-                  </div>
-                )}
-                {/* Subtle Inner Shadow on Image */}
-                <div className="absolute inset-0 shadow-[inset_0_0_15px_rgba(0,0,0,0.5)] pointer-events-none" />
-              </div>
-
-              {/* Content Body */}
-              <div className="p-5 flex flex-col flex-1 bg-gradient-to-b from-[#161623] to-[#0a0912]">
-                 
-                 {/* Title */}
-                 <h3 className="pixel-font text-[0.8rem] text-game-accent drop-shadow-md mb-3">
-                   {project.title}
-                 </h3>
-
-                 {/* Description */}
-                 <p className="text-[0.65rem] text-game-white leading-relaxed line-clamp-4 mb-4 flex-1">
-                   {project.description}
-                 </p>
-                 
-                 {/* Tech Stack Pills */}
-                 <div className="flex flex-wrap gap-1.5 mb-6">
-                   {project.techStack.map(tech => (
-                     <span key={tech} className="px-2 py-1 bg-[#1a1a2e] border border-game-border rounded text-[0.5rem] text-game-cyan pixel-font uppercase tracking-wider shadow-sm">
-                       {tech}
-                     </span>
-                   ))}
-                 </div>
-
-                 {/* Actions */}
-                 <div className="mt-auto flex gap-3 pt-4 border-t border-game-border/30">
-                   {project.liveUrl && (
-                     <PixelButton
-                       variant="primary"
-                       size="sm"
-                       href={project.liveUrl}
-                     >
-                       PLAY
-                     </PixelButton>
-                   )}
-                   <PixelButton
-                     variant="secondary"
-                     size="sm"
-                     href={project.githubUrl}
-                   >
-                     GITHUB
-                   </PixelButton>
-                 </div>
-
-              </div>
-            </motion.div>
+            <ProjectCard key={project.id} project={project} i={i} />
           ))}
         </div>
       </div>

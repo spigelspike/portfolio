@@ -14,9 +14,16 @@ export default function SpawnArea() {
   const [displayedRole, setDisplayedRole] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
+  const [isSafari, setIsSafari] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
+    // Safari and iOS do not support webm alpha channel well, so we provide a webp fallback
+    const ua = navigator.userAgent.toLowerCase();
+    const isSafariBrowser = /^((?!chrome|android).)*safari/i.test(ua) || 
+                            /ipad|iphone|ipod/i.test(ua) || 
+                            (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    setIsSafari(isSafariBrowser);
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -71,15 +78,27 @@ export default function SpawnArea() {
           {/* Magical Aura/Glow behind character */}
           <div className="absolute inset-0 bg-game-accent/20 blur-[50px] rounded-full animate-pulse-slow" />
           
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-contain pixel-render drop-shadow-[0_0_15px_rgba(255,215,0,0.3)]"
-          >
-            <source src="/assets/idle/idle_animation.webm?v=2" type="video/webm" />
-          </video>
+          {isSafari ? (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-contain pixel-render"
+            >
+              <source src="/assets/idle/idle_animation.mov?v=3" type='video/quicktime' />
+            </video>
+          ) : (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-contain pixel-render"
+            >
+              <source src="/assets/idle/idle_animation.webm?v=2" type="video/webm" />
+            </video>
+          )}
         </div>
       </motion.div>
 

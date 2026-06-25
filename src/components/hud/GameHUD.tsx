@@ -18,22 +18,13 @@ const MOBILE_NAV_ITEMS = [
   { label: "About", href: "/#about", icon: <User size={20} /> },
   { label: "Projects", href: "/#projects", icon: <Briefcase size={20} /> },
   { label: "Contact", href: "/#contact", icon: <Mail size={20} /> },
-  { 
-    label: "Profile", 
-    href: "/about", 
-    icon: (
-      <div className="w-5 h-5 rounded-full overflow-hidden border border-[#FFD700] shadow-[0_0_5px_rgba(255,215,0,0.5)]">
-        <Image src="/assets/pfpj.jpg" alt="Profile" width={20} height={20} className="w-full h-full object-cover" unoptimized />
-      </div>
-    ) 
-  },
 ];
 
 export default function GameHUD() {
   const router = useRouter();
   const pathname = usePathname();
   
-  const [activeSection, setActiveSection] = useState(pathname === "/about" ? "about" : "home");
+  const [activeSection, setActiveSection] = useState("home");
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollYRef = useRef(0);
@@ -149,16 +140,6 @@ export default function GameHUD() {
 
           {/* ── Right: Profile & XP bar (XP bar at far right) ── */}
           <div className="flex-1 flex justify-end items-center gap-3 xl:gap-5">
-            {/* Profile Button */}
-            <button
-              onClick={() => router.push("/about")}
-              className={`flex items-center gap-2 transition-all duration-300 hover:scale-105 ${pathname === "/about" ? "opacity-100 scale-105" : "opacity-80 hover:opacity-100"}`}
-            >
-              <div className={`w-8 h-8 rounded-full overflow-hidden border-2 ${pathname === "/about" ? "border-[#00F5D4] shadow-[0_0_10px_rgba(0,245,212,0.5)]" : "border-white/[0.08]"}`}>
-                <Image src="/assets/pfpj.jpg" alt="Profile" width={32} height={32} className="w-full h-full object-cover" />
-              </div>
-            </button>
-
             {/* Level / XP Bar */}
             <div className="hidden lg:flex items-center gap-2 bg-white/[0.03] border border-white/[0.08] px-3 py-1.5 rounded-sm shrink-0">
               <span className="pixel-font text-[0.55rem] text-[#94A3B8]">LVL</span>

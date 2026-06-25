@@ -400,4 +400,16 @@ body {
   }
 }
 
-
+/* ============================================
+   MEDIA PROTECTION
+   ============================================ */
+img, video {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none; /* Prevents all right-clicks and interactions */
+}
