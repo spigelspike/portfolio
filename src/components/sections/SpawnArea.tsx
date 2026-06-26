@@ -80,16 +80,18 @@ export default function SpawnArea() {
           
           {isSafari ? (
             <video
+              key="safari-video"
               autoPlay
               loop
               muted
               playsInline
               className="absolute inset-0 w-full h-full object-contain pixel-render"
             >
-              <source src="/assets/idle/idle_animation.mov?v=3" type='video/quicktime' />
+              <source src="/assets/idle/idle_animation.mov?v=3" type='video/mp4; codecs="hvc1"' />
             </video>
           ) : (
             <video
+              key="default-video"
               autoPlay
               loop
               muted
