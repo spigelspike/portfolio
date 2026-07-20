@@ -65,7 +65,7 @@ export default function SpawnArea() {
 
       {/* ── Character on Terrain (Left) ── */}
       <motion.div
-        className="absolute bottom-10 sm:bottom-16 lg:bottom-20
+        className="hidden md:block absolute bottom-10 sm:bottom-16 lg:bottom-20
                    left-0 sm:-left-4 lg:left-0
                    w-48 h-48 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[400px] lg:h-[400px]
                    z-10 pointer-events-none"
