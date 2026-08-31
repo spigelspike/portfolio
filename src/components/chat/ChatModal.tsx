@@ -127,6 +127,8 @@ export default function ChatModal({ isOpen, onClose }: ChatModalProps) {
     }
   };
 
+  if (!isOpen) return null;
+
   return (
     <div
       className={styles.backdrop}
@@ -135,6 +137,7 @@ export default function ChatModal({ isOpen, onClose }: ChatModalProps) {
       aria-modal="true"
       data-lenis-prevent
     >
+
       <div
         className={styles.modalContainer}
         onClick={(e) => e.stopPropagation()}
