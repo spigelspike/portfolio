@@ -480,13 +480,6 @@
   flex-shrink: 0;
 }
 
-@media (max-width: 540px) {
-  .quickPromptsGrid {
-    grid-template-columns: 1fr;
-    gap: 0.45rem;
-  }
-}
-
 .quickQuestionCard {
   background: rgba(14, 11, 30, 0.75);
   border: 1.5px solid rgba(139, 92, 246, 0.4);
@@ -598,4 +591,167 @@
 .sendBtn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* =========================================================
+   MOBILE RESPONSIVE ENHANCEMENTS (< 640px)
+   Keeps desktop unchanged while making mobile spacious & crisp
+   ========================================================= */
+@media (max-width: 640px) {
+  .backdrop {
+    padding: 0.5rem;
+  }
+
+  .modalContainer {
+    width: 98vw;
+    height: 94vh;
+    max-height: 94vh;
+    border-radius: 12px;
+  }
+
+  .header {
+    padding: 0.65rem 0.85rem;
+    gap: 0.5rem;
+  }
+
+  .titleText {
+    font-size: 0.68rem;
+  }
+
+  .headerBtn {
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+  }
+
+  /* Compact Mobile Bio Card */
+  .bioCard {
+    margin: 0.4rem 0.6rem 0.2rem;
+    padding: 0.55rem 0.75rem;
+    gap: 0.75rem;
+    border-radius: 8px;
+  }
+
+  .cyberGridDecor {
+    display: none; /* remove grid on mobile so text has full width */
+  }
+
+  .bioAvatarImage {
+    width: 44px;
+    height: 44px;
+  }
+
+  .bioName {
+    font-size: 0.66rem;
+  }
+
+  .verifiedBadge {
+    width: 13px;
+    height: 13px;
+    font-size: 8px;
+  }
+
+  .bioTitle {
+    font-size: 0.72rem;
+  }
+
+  .bioTagsRow {
+    font-size: 0.6rem;
+    gap: 0.35rem;
+    margin-top: 0;
+  }
+
+  .geminiBadge {
+    margin-top: 0.2rem;
+    font-size: 0.4rem;
+    padding: 0.15rem 0.45rem;
+  }
+
+  /* Compact Chat Body & Message List */
+  .chatBody {
+    padding: 0 0.65rem;
+  }
+
+  .messageList {
+    padding: 0.5rem 0.1rem;
+    gap: 0.65rem;
+  }
+
+  .welcomeCard {
+    padding: 0.75rem 0.85rem;
+    gap: 0.75rem;
+  }
+
+  .welcomeHeader {
+    font-size: 0.68rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .welcomeSub1 {
+    font-size: 0.74rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+  }
+
+  .welcomeDivider {
+    margin: 0.4rem 0;
+  }
+
+  .welcomeSub2 {
+    font-size: 0.68rem;
+    line-height: 1.4;
+  }
+
+  .pixelBotFace {
+    width: 42px;
+    height: 42px;
+  }
+
+  .pixelBotEyes {
+    gap: 5px;
+    font-size: 9px;
+  }
+
+  .pixelBotMouth {
+    width: 10px;
+    height: 2px;
+    margin-top: 2px;
+  }
+
+  /* Keep 2-column grid on mobile for compactness */
+  .quickPromptsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.4rem;
+    padding: 0.4rem 0 0.5rem;
+  }
+
+  .quickQuestionCard {
+    padding: 0.45rem 0.55rem;
+    font-size: 0.44rem;
+    line-height: 1.35;
+    gap: 0.4rem;
+  }
+
+  .questionIcon {
+    font-size: 0.72rem;
+  }
+
+  /* Compact Input Bar */
+  .inputArea {
+    padding: 0.45rem 0 0.65rem;
+    gap: 0.45rem;
+  }
+
+  .inputField {
+    padding: 0.6rem 2.2rem 0.6rem 0.75rem;
+    font-size: 0.76rem;
+    border-radius: 8px;
+  }
+
+  .sendBtn {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.52rem;
+    border-radius: 8px;
+    gap: 0.35rem;
+  }
 }
