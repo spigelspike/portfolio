@@ -8,12 +8,13 @@ import styles from "./RagCompanion.module.css";
 
 // Sequential emotion step cycle: pointing -> idle -> blink -> look -> smile -> loop
 const EMOTION_STEPS: { emotion: CharacterEmotion; durationMs: number }[] = [
-  { emotion: "point", durationMs: 3800 },
-  { emotion: "idle", durationMs: 3200 },
-  { emotion: "blink", durationMs: 800 },
-  { emotion: "look", durationMs: 2600 },
-  { emotion: "smile", durationMs: 2800 },
+  { emotion: "point", durationMs: 1400 },
+  { emotion: "idle", durationMs: 1200 },
+  { emotion: "blink", durationMs: 400 },
+  { emotion: "look", durationMs: 1100 },
+  { emotion: "smile", durationMs: 1300 },
 ];
+
 
 export default function RagCompanion() {
   const [currentEmotion, setCurrentEmotion] = useState<CharacterEmotion>("point");
