@@ -6,15 +6,13 @@ import CharacterSprite, { CharacterEmotion } from "./CharacterSprite";
 import ChatModal from "./ChatModal";
 import styles from "./RagCompanion.module.css";
 
-// Sequential emotion step cycle: pointing -> idle -> blink -> look -> smile -> loop
-const EMOTION_STEPS: { emotion: CharacterEmotion; durationMs: number }[] = [
-  { emotion: "point", durationMs: 1400 },
-  { emotion: "idle", durationMs: 1200 },
+// Resting loop emotions (cycles naturally without repeating the pointing gesture)
+const IDLE_STEPS: { emotion: CharacterEmotion; durationMs: number }[] = [
+  { emotion: "idle", durationMs: 1600 },
   { emotion: "blink", durationMs: 400 },
-  { emotion: "look", durationMs: 1100 },
-  { emotion: "smile", durationMs: 1300 },
+  { emotion: "look", durationMs: 1400 },
+  { emotion: "smile", durationMs: 1500 },
 ];
-
 
 export default function RagCompanion() {
   const [currentEmotion, setCurrentEmotion] = useState<CharacterEmotion>("point");
@@ -26,33 +24,32 @@ export default function RagCompanion() {
   const stepIndexRef = useRef(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Animation cycle loop: point -> idle -> blink -> look -> smile -> loop
+  // Initial pointing sequence for 2.2s, then seamless transition into natural idle loop
   useEffect(() => {
     if (isChatOpen) return;
 
-    const runStep = () => {
-      const step = EMOTION_STEPS[stepIndexRef.current];
-      if (!isHovered) {
-        setCurrentEmotion(step.emotion);
-
-        // If cycling back to pointing and bubble wasn't manually dismissed, show bubble
-        if (step.emotion === "point" && !bubbleDismissed) {
-          setShowSpeechBubble(true);
+    // Start with initial point pose, then cycle idle emotions
+    const initialPointTimer = setTimeout(() => {
+      const runIdleStep = () => {
+        if (!isHovered) {
+          const step = IDLE_STEPS[stepIndexRef.current];
+          setCurrentEmotion(step.emotion);
         }
-      }
 
-      timeoutRef.current = setTimeout(() => {
-        stepIndexRef.current = (stepIndexRef.current + 1) % EMOTION_STEPS.length;
-        runStep();
-      }, step.durationMs);
-    };
+        timeoutRef.current = setTimeout(() => {
+          stepIndexRef.current = (stepIndexRef.current + 1) % IDLE_STEPS.length;
+          runIdleStep();
+        }, IDLE_STEPS[stepIndexRef.current].durationMs);
+      };
 
-    runStep();
+      runIdleStep();
+    }, 2200);
 
     return () => {
+      clearTimeout(initialPointTimer);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
-  }, [isChatOpen, isHovered, bubbleDismissed]);
+  }, [isChatOpen, isHovered]);
 
   // Initial speech bubble display (fades out after 8.5 seconds on initial load if not clicked)
   useEffect(() => {
@@ -66,10 +63,10 @@ export default function RagCompanion() {
   }, [bubbleDismissed, isChatOpen]);
 
   const handleOpenChat = () => {
-    setIsChatOpen(true);
+    setCurrentEmotion("point");
     setShowSpeechBubble(false);
     setBubbleDismissed(true);
-    setCurrentEmotion("smile");
+    setIsChatOpen(true);
   };
 
   const handleCloseChat = () => {
@@ -82,6 +79,7 @@ export default function RagCompanion() {
     setShowSpeechBubble(false);
     setBubbleDismissed(true);
   };
+
 
   return (
     <>
@@ -147,9 +145,10 @@ export default function RagCompanion() {
           onMouseLeave={() => {
             setIsHovered(false);
             if (!isChatOpen) {
-              setCurrentEmotion(EMOTION_STEPS[stepIndexRef.current].emotion);
+              setCurrentEmotion(IDLE_STEPS[stepIndexRef.current].emotion);
             }
           }}
+
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.96 }}
           className={styles.charButton}
