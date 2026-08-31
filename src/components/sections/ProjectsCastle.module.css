@@ -1,0 +1,302 @@
+.section {
+  --ink: #f4f5fb;
+  --muted: #afb1c1;
+  --line: #39344e;
+  --deep-line: #1c1d2d;
+  --purple: #7d42ff;
+  --purple-dim: #42258f;
+  --panel: #060912;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 55% 42% at 50% 47%, rgba(36, 29, 74, 0.11), transparent 70%),
+    linear-gradient(180deg, #030811 0%, #02060e 100%);
+  color: var(--ink);
+  padding: clamp(3.4rem, 5vw, 4.2rem) clamp(1.5rem, 4.7vw, 4.7rem) clamp(3.8rem, 5vw, 4.8rem);
+}
+
+.section::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  opacity: 0.34;
+  background-image: linear-gradient(rgba(117, 103, 162, 0.028) 1px, transparent 1px), linear-gradient(90deg, rgba(117, 103, 162, 0.028) 1px, transparent 1px);
+  background-size: 5px 5px;
+  pointer-events: none;
+}
+
+.showcase { width: min(100%, 1368px); margin: 0 auto; }
+
+.header { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.titleRow { display: flex; align-items: center; justify-content: center; gap: clamp(0.72rem, 1.25vw, 1.25rem); }
+
+.heading {
+  margin: 0;
+  color: #f4f5fa;
+  font-family: var(--font-pixel), "Press Start 2P", monospace;
+  font-size: clamp(1.45rem, 2.42vw, 2.18rem);
+  font-weight: 400;
+  letter-spacing: clamp(0.07rem, 0.22vw, 0.2rem);
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #111522;
+}
+
+.headerEmblem { position: relative; display: inline-block; width: 2.1rem; height: 2.25rem; flex: 0 0 auto; filter: drop-shadow(0 2px 0 #131526); }
+.emblemSword { position: absolute; top: 0.02rem; width: 1.92rem; height: 1.92rem; color: #c1bbf1; }
+.emblemSwordLeft { left: 0.02rem; transform: rotate(-10deg) scaleX(-1); }
+.emblemSwordRight { right: 0.02rem; color: #9c8aff; transform: rotate(10deg); }
+
+.pixelFlourish {
+  position: relative;
+  display: block;
+  width: clamp(3.8rem, 8.3vw, 7.1rem);
+  height: 1.1rem;
+  margin-right: clamp(0.1rem, 0.7vw, 0.65rem);
+  background:
+    linear-gradient(var(--purple-dim), var(--purple-dim)) 0.15rem 50% / 0.2rem 0.2rem no-repeat,
+    linear-gradient(var(--purple), var(--purple)) 1.65rem 12% / 0.19rem 0.19rem no-repeat,
+    linear-gradient(var(--purple-dim), var(--purple-dim)) 2.52rem 50% / 0.2rem 0.2rem no-repeat,
+    linear-gradient(var(--purple-dim), var(--purple-dim)) 3.4rem 50% / 0.36rem 0.36rem no-repeat,
+    linear-gradient(var(--purple-dim), var(--purple-dim)) 4.5rem 50% / 0.2rem 0.2rem no-repeat,
+    linear-gradient(var(--purple-dim), var(--purple-dim)) 5.45rem 50% / 0.2rem 0.2rem no-repeat;
+  opacity: 0.82;
+}
+
+.pixelFlourishMirror { margin-right: 0; margin-left: clamp(0.1rem, 0.7vw, 0.65rem); transform: scaleX(-1); }
+
+.subtitle {
+  margin: 1.08rem 0 0;
+  color: #d4d4de;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: clamp(0.72rem, 0.92vw, 0.93rem);
+  letter-spacing: 0.015em;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 0.72rem;
+  margin-top: clamp(2.65rem, 4vw, 3.25rem);
+  color: #7d7c8a;
+  font-family: var(--font-pixel), "Press Start 2P", monospace;
+  font-size: clamp(0.72rem, 0.9vw, 0.9rem);
+  letter-spacing: 0.07em;
+}
+
+.counter strong { color: var(--purple); font-weight: 400; }
+.counter > span:first-child, .counter > span:last-child { color: #4f3999; font-size: 0.8em; }
+.counterSlash { color: #7f778b; }
+
+.heroArea { position: relative; margin-top: 1.35rem; }
+
+.heroCard {
+  position: relative;
+  overflow: hidden;
+  min-height: 28rem;
+  border: 1px solid #433a63;
+  clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px);
+  background: #050810;
+  box-shadow: inset 0 0 0 1px rgba(168, 121, 255, 0.075), 0 18px 42px rgba(0, 0, 0, 0.28);
+}
+
+.heroSlide { position: relative; min-height: 28rem; }
+.mediaPanel { position: absolute; top: 0; right: 0; bottom: 0; width: 62%; overflow: hidden; }
+.mediaImage, .thumbnailImage { object-fit: cover; }
+.mediaShade { position: absolute; inset: 0; background: linear-gradient(90deg, #050810 0%, rgba(5, 8, 16, 0.97) 5%, rgba(5, 8, 16, 0.78) 20%, rgba(5, 8, 16, 0.15) 49%, rgba(2, 4, 8, 0.12) 100%); }
+.mediaVignette { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, 0.27), transparent 34%, rgba(0, 0, 0, 0.25)); }
+
+.projectInfo {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: min(49.5rem, 59%);
+  min-height: 28rem;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.5rem clamp(2.25rem, 3vw, 3.45rem) 2.25rem;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 1.25rem;
+  color: #9c65ff;
+  font-family: var(--font-pixel), "Press Start 2P", monospace;
+  font-size: clamp(0.55rem, 0.72vw, 0.71rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.eyebrow span { color: #ffb348; font-family: serif; font-size: 1.55em; line-height: 0; }
+
+.projectTitle {
+  max-width: 33rem;
+  margin: 0;
+  color: #f8f8fa;
+  font-family: var(--font-pixel), "Press Start 2P", monospace;
+  font-size: clamp(1.3rem, 2.3vw, 2rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1.42;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #11131e;
+}
+
+.titleUnderline { display: block; width: 2.5rem; height: 2px; margin: 1rem 0 1.32rem; background: var(--purple); box-shadow: 0 0 0 1px rgba(124, 66, 255, 0.16), 2.9rem 0 0 -0.5px rgba(124, 66, 255, 0.82); }
+
+.description {
+  max-width: 31rem;
+  margin: 0;
+  color: #d2d2dc;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: clamp(0.77rem, 0.98vw, 0.91rem);
+  line-height: 1.83;
+  letter-spacing: 0.006em;
+}
+
+.techList { display: flex; flex-wrap: wrap; gap: 0.56rem; margin: 1.28rem 0 1.75rem; padding: 0; list-style: none; }
+.techList li { border: 1px solid #262b3d; border-radius: 2px; background: rgba(2, 5, 13, 0.54); color: #afa4de; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.64rem, 0.72vw, 0.75rem); line-height: 1; padding: 0.44rem 0.53rem; }
+.techList .techAccent { color: #4fe1c8; border-color: #1f554f; }
+.actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+.action {
+  display: inline-flex;
+  min-height: 3.76rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.72rem;
+  padding: 0.95rem 1.44rem;
+  clip-path: polygon(5px 0, calc(100% - 5px) 0, 100% 5px, 100% calc(100% - 5px), calc(100% - 5px) 100%, 5px 100%, 0 calc(100% - 5px), 0 5px);
+  color: #f8f8fc;
+  font-family: var(--font-pixel), "Press Start 2P", monospace;
+  font-size: clamp(0.6rem, 0.7vw, 0.71rem);
+  letter-spacing: 0.015em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform 150ms ease, filter 150ms ease, border-color 150ms ease, background 150ms ease;
+}
+
+.action:hover { transform: translateY(-2px); filter: brightness(1.16); }
+.action:focus-visible, .heroArrow:focus-visible, .railArrow:focus-visible, .timelineStep:focus-visible, .thumbnailButton:focus-visible { outline: 2px solid #b799ff; outline-offset: 4px; }
+.primaryAction { min-width: 12.95rem; background: linear-gradient(135deg, #6331db, #713bde); box-shadow: inset 0 0 0 1px #9f76ff, 0 3px 0 #2c145e, 0 0 18px rgba(100, 52, 237, 0.26); }
+.secondaryAction { min-width: 11.5rem; border: 1px solid #47475d; background: rgba(7, 10, 19, 0.36); }
+.secondaryAction:hover { border-color: #a493dd; background: rgba(75, 65, 107, 0.22); }
+.actionIcon { width: 1.08rem; height: 1.08rem; fill: currentColor; }
+
+.comingSoonVisual { display: grid; width: 100%; height: 100%; place-items: center; color: #7a7892; font-family: var(--font-pixel), monospace; font-size: 7rem; background: radial-gradient(circle at center, rgba(87, 67, 133, 0.18), transparent 46%), #080b13; }
+
+.heroArrow, .railArrow {
+  display: grid;
+  place-items: center;
+  border: 1px solid #4c3b78;
+  clip-path: polygon(5px 0, calc(100% - 5px) 0, 100% 5px, 100% calc(100% - 5px), calc(100% - 5px) 100%, 5px 100%, 0 calc(100% - 5px), 0 5px);
+  color: #9259ff;
+  background: #070a13;
+  box-shadow: inset 0 0 0 1px rgba(152, 95, 255, 0.1);
+  transition: color 150ms ease, border-color 150ms ease, background 150ms ease, transform 150ms ease;
+}
+
+.heroArrow:hover, .railArrow:hover { color: #c4a6ff; border-color: #9d70ff; background: #0f0a1e; transform: translateY(-2px); }
+.heroArrow { position: absolute; z-index: 5; top: -5.55rem; width: 3.1rem; height: 3.1rem; }
+.heroArrowPrevious { left: 0; }
+.heroArrowNext { right: 0; }
+
+.timeline { position: relative; margin: 2.65rem 3.6rem 1.3rem; }
+.timelineTrack { position: absolute; top: 2.1rem; right: 0; left: 0; height: 1px; background: #343747; }
+.timelineTrack span { display: block; height: 100%; background: linear-gradient(90deg, #7840f7, #9e76ff); box-shadow: 0 0 7px rgba(124, 66, 255, 0.72); transition: width 220ms ease; }
+.timelineSteps { display: grid; }
+
+.timelineStep { display: flex; flex-direction: column; align-items: center; gap: 0.76rem; border: 0; color: #adb0bc; background: transparent; font-family: var(--font-pixel), "Press Start 2P", monospace; font-size: clamp(0.57rem, 0.68vw, 0.68rem); }
+.timelineStep i { display: block; width: 0.72rem; height: 0.72rem; border-radius: 50%; background: #555865; transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease; }
+.timelineStep:hover { color: #ecebf4; }
+.timelineStepActive { color: #9164ff; }
+.timelineStepActive i { background: #7943f6; box-shadow: 0 0 11px 3px rgba(112, 55, 255, 0.52); transform: scale(1.15); }
+
+.rail { display: grid; grid-template-columns: 3.25rem minmax(0, 1fr) 3.25rem; align-items: center; gap: 1.12rem; }
+.railArrow { width: 3.25rem; height: 3.25rem; }
+.thumbnailList { display: grid; gap: clamp(0.75rem, 1.45vw, 1.45rem); }
+.thumbnailButton { display: flex; min-width: 0; flex-direction: column; align-items: center; border: 0; color: #bbbcc7; background: transparent; }
+
+.thumbnail {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 1.235;
+  border: 1px solid #2a2e3e;
+  clip-path: polygon(5px 0, calc(100% - 5px) 0, 100% 5px, 100% calc(100% - 5px), calc(100% - 5px) 100%, 5px 100%, 0 calc(100% - 5px), 0 5px);
+  background: #080b13;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease, filter 180ms ease;
+}
+
+.thumbnailButton:hover .thumbnail { border-color: #70648e; filter: brightness(1.1); transform: translateY(-2px); }
+.thumbnailButtonActive .thumbnail { border: 2px solid #7542f3; box-shadow: 0 0 11px rgba(116, 63, 240, 0.74), inset 0 0 0 1px #bf9cff; }
+.thumbnailPlaceholder { border: 2px dashed #4d5362; background: rgba(9, 13, 22, 0.48); }
+.thumbnailPlaceholder b { display: grid; height: 100%; place-items: center; color: #777c88; font-family: var(--font-pixel), monospace; font-size: clamp(1.2rem, 2.1vw, 2rem); }
+
+.thumbnailTitle { display: block; min-height: 2.5em; margin-top: 0.92rem; color: inherit; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.56rem, 0.72vw, 0.72rem); font-weight: 600; letter-spacing: 0.025em; line-height: 1.32; text-align: center; text-transform: uppercase; }
+.thumbnailButtonActive { color: #9164ff; }
+
+.frameCorners { position: absolute; z-index: 5; inset: 0; pointer-events: none; }
+.frameCorner { position: absolute; display: block; width: 0.87rem; height: 0.87rem; border-color: #6843ad; border-style: solid; opacity: 0.86; }
+.topLeft { top: 0.38rem; left: 0.38rem; border-width: 2px 0 0 2px; }
+.topRight { top: 0.38rem; right: 0.38rem; border-width: 2px 2px 0 0; }
+.bottomLeft { bottom: 0.38rem; left: 0.38rem; border-width: 0 0 2px 2px; }
+.bottomRight { right: 0.38rem; bottom: 0.38rem; border-width: 0 2px 2px 0; }
+
+@media (max-width: 900px) {
+  .section { padding-right: 1.25rem; padding-left: 1.25rem; }
+  .heroCard, .heroSlide, .projectInfo { min-height: 31rem; }
+  .mediaPanel { width: 65%; }
+  .projectInfo { width: 63%; padding-right: 1.65rem; padding-left: 1.65rem; }
+  .rail { grid-template-columns: 2.8rem minmax(0, 1fr) 2.8rem; gap: 0.7rem; }
+  .railArrow { width: 2.8rem; height: 2.8rem; }
+  .thumbnailList { gap: 0.55rem; }
+  .thumbnailTitle { font-size: 0.55rem; }
+}
+
+@media (max-width: 680px) {
+  .section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+  .heading { font-size: 1rem; letter-spacing: 0.05rem; }
+  .headerEmblem { width: 1.65rem; height: 1.76rem; }
+  .emblemSword { width: 1.55rem; height: 1.55rem; }
+  .pixelFlourish { width: 1.75rem; margin: 0; opacity: 0.58; transform: scale(0.62); }
+  .pixelFlourishMirror { transform: scaleX(-1) scale(0.62); }
+  .subtitle { max-width: 19rem; line-height: 1.6; }
+  .counter { margin-top: 2rem; }
+  .heroArea { margin-top: 1.05rem; }
+  .heroArrow { top: -4.45rem; width: 2.55rem; height: 2.55rem; }
+  .heroCard { min-height: 39rem; }
+  .heroSlide { min-height: 39rem; }
+  .mediaPanel { width: 100%; height: 18rem; bottom: auto; }
+  .mediaShade { background: linear-gradient(180deg, rgba(5, 8, 16, 0.04), rgba(5, 8, 16, 0.15) 37%, #050810 98%); }
+  .projectInfo { width: 100%; min-height: 39rem; justify-content: flex-end; padding: 2rem 1.5rem; }
+  .projectTitle { font-size: 1.2rem; line-height: 1.48; }
+  .description { font-size: 0.71rem; line-height: 1.75; }
+  .techList { gap: 0.45rem; margin: 1rem 0 1.35rem; }
+  .techList li { padding: 0.4rem 0.44rem; font-size: 0.59rem; }
+  .actions { gap: 0.65rem; }
+  .action { min-height: 3.25rem; padding: 0.8rem 1rem; font-size: 0.55rem; }
+  .primaryAction { min-width: 10.7rem; }
+  .secondaryAction { min-width: 9.6rem; }
+  .timeline { margin: 2.1rem 0.9rem 1.1rem; }
+  .timelineTrack { top: 1.85rem; }
+  .timelineStep { gap: 0.65rem; font-size: 0.49rem; }
+  .timelineStep i { width: 0.6rem; height: 0.6rem; }
+  .rail { display: flex; overflow-x: auto; padding-bottom: 0.35rem; scroll-snap-type: x proximity; }
+  .railArrow { position: sticky; z-index: 4; flex: 0 0 auto; width: 2.55rem; height: 2.55rem; }
+  .railArrow:first-child { left: 0; }
+  .railArrow:last-child { right: 0; }
+  .thumbnailList { display: flex; gap: 0.75rem; }
+  .thumbnailButton { width: 7.4rem; flex: 0 0 7.4rem; scroll-snap-align: start; }
+  .thumbnailTitle { font-size: 0.58rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .action, .heroArrow, .railArrow, .thumbnail, .timelineTrack span, .timelineStep i { transition: none; }
+}

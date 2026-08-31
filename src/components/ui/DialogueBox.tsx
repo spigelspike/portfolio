@@ -1,9 +1,7 @@
 "use client";
-// ============================================
-// DialogueBox — RPG-style text box
-// ============================================
+
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface DialogueBoxProps {
   text: string;
@@ -20,26 +18,6 @@ export default function DialogueBox({
   className = "",
   onComplete,
 }: DialogueBoxProps) {
-  const [displayedText, setDisplayedText] = useState("");
-  const [isComplete, setIsComplete] = useState(false);
-
-  useEffect(() => {
-    setDisplayedText("");
-    setIsComplete(false);
-    let i = 0;
-    const interval = setInterval(() => {
-      if (i < text.length) {
-        setDisplayedText(text.slice(0, i + 1));
-        i++;
-      } else {
-        setIsComplete(true);
-        onComplete?.();
-        clearInterval(interval);
-      }
-    }, speed);
-    return () => clearInterval(interval);
-  }, [text, speed, onComplete]);
-
   return (
     <motion.div
       className={`game-panel p-4 sm:p-5 max-w-lg relative ${className}`}
@@ -52,11 +30,40 @@ export default function DialogueBox({
           <span className="game-panel-header text-[0.5rem]">{speaker}</span>
         </div>
       )}
+      <TypedDialogue key={`${text}-${speed}`} text={text} speed={speed} onComplete={onComplete} />
+    </motion.div>
+  );
+}
+
+function TypedDialogue({ text, speed, onComplete }: Pick<DialogueBoxProps, "text" | "speed" | "onComplete">) {
+  const [displayedText, setDisplayedText] = useState("");
+  const [isComplete, setIsComplete] = useState(text.length === 0);
+
+  useEffect(() => {
+    if (!text) {
+      const completion = window.setTimeout(() => onComplete?.(), 0);
+      return () => window.clearTimeout(completion);
+    }
+
+    let index = 0;
+    const interval = window.setInterval(() => {
+      index += 1;
+      setDisplayedText(text.slice(0, index));
+      if (index >= text.length) {
+        setIsComplete(true);
+        onComplete?.();
+        window.clearInterval(interval);
+      }
+    }, speed);
+
+    return () => window.clearInterval(interval);
+  }, [text, speed, onComplete]);
+
+  return (
+    <>
       <p className="text-game-white text-sm leading-relaxed font-light mt-1">
         {displayedText}
-        {!isComplete && (
-          <span className="inline-block w-2 h-4 bg-game-accent ml-1 animate-pulse" />
-        )}
+        {!isComplete && <span className="inline-block w-2 h-4 bg-game-accent ml-1 animate-pulse" />}
       </p>
       {isComplete && (
         <motion.span
@@ -67,6 +74,6 @@ export default function DialogueBox({
           ▼
         </motion.span>
       )}
-    </motion.div>
+    </>
   );
 }

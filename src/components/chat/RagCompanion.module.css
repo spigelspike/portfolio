@@ -1,0 +1,310 @@
+.companionContainer {
+  position: fixed;
+  bottom: 5rem;
+  right: 0.75rem;
+  z-index: 45;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  pointer-events: auto;
+  user-select: none;
+}
+
+@media (min-width: 640px) {
+  .companionContainer {
+    bottom: 2rem;
+    right: 1.5rem;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .companionContainer {
+    right: 2rem;
+  }
+}
+
+/* Pixel Card Styled Matching Reference */
+.speechPopup {
+  position: relative;
+  background: rgba(12, 11, 28, 0.94);
+  border: 2px solid #8B5CF6;
+  border-radius: 14px;
+  padding: 1.25rem 1.4rem;
+  width: min(90vw, 290px);
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.8),
+    0 0 25px rgba(139, 92, 246, 0.35),
+    inset 0 0 15px rgba(139, 92, 246, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  clip-path: polygon(
+    8px 0, calc(100% - 8px) 0,
+    100% 8px, 100% calc(100% - 8px),
+    calc(100% - 8px) 100%, 8px 100%,
+    0 calc(100% - 8px), 0 8px
+  );
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .speechPopup {
+    margin-bottom: 1rem;
+    width: 290px;
+  }
+}
+
+.speechPopup:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 20px 45px rgba(0, 0, 0, 0.85),
+    0 0 32px rgba(139, 92, 246, 0.5),
+    inset 0 0 20px rgba(139, 92, 246, 0.15);
+}
+
+/* Question Mark Badge */
+.questionBadge {
+  width: 32px;
+  height: 32px;
+  background: #20133b;
+  border: 1.5px solid #8B5CF6;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: var(--font-pixel), "Press Start 2P", monospace;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 0.85rem;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+  position: relative;
+}
+
+.questionBadge::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 6px;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid #8B5CF6;
+}
+
+/* Headline in Pixel Font */
+.headline {
+  font-family: var(--font-pixel), "Press Start 2P", monospace;
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.highlightText {
+  color: #A78BFA;
+  text-shadow: 0 0 12px rgba(167, 139, 250, 0.6);
+}
+
+/* Subtitle */
+.subtext {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: #94A3B8;
+  margin-bottom: 0.2rem;
+}
+
+/* Dismiss Close Button */
+.closeBtn {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.75rem;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  line-height: 1;
+}
+
+.closeBtn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Pointer Notch */
+.pointerNotch {
+  position: absolute;
+  width: 0;
+  height: 0;
+  display: block;
+}
+
+@media (max-width: 639px) {
+  .pointerNotch {
+    bottom: -9px;
+    right: 28px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 9px solid #8B5CF6;
+  }
+}
+
+@media (min-width: 640px) {
+  .pointerNotch {
+    right: -10px;
+    bottom: 35px;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 10px solid #8B5CF6;
+  }
+}
+
+/* Character Button & Ambient Stages */
+.charButton {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Atmospheric Glowing Aura behind character */
+.characterAura {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  width: 140px;
+  height: 180px;
+  background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.35) 0%, rgba(124, 58, 237, 0.15) 45%, transparent 70%);
+  filter: blur(14px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: auraPulse 4s infinite ease-in-out;
+}
+
+@keyframes auraPulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: translate(-50%, -20%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -20%) scale(1.1);
+  }
+}
+
+/* Ground Contact Floor Shadow and Pedestal Ring */
+.groundShadow {
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 20px;
+  background: radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0.9) 0%, rgba(139, 92, 246, 0.4) 50%, transparent 75%);
+  filter: blur(4px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.groundRim {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 76px;
+  height: 12px;
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+  pointer-events: none;
+  z-index: 0;
+  transition: all 0.3s ease;
+}
+
+.charButton:hover .groundRim {
+  border-color: rgba(0, 245, 212, 0.8);
+  box-shadow: 0 0 16px rgba(0, 245, 212, 0.7);
+  width: 86px;
+}
+
+/* Ambient Floating Magic / Cyber Sparkles */
+.sparkle {
+  position: absolute;
+  color: #A78BFA;
+  pointer-events: none;
+  z-index: 2;
+  font-size: 10px;
+  text-shadow: 0 0 8px rgba(167, 139, 250, 0.8);
+  animation: sparkleTwinkle 3s infinite ease-in-out;
+}
+
+.sparkle1 {
+  top: 18%;
+  right: -6px;
+  animation-delay: 0s;
+}
+
+.sparkle2 {
+  top: 42%;
+  left: -8px;
+  font-size: 8px;
+  color: #00F5D4;
+  text-shadow: 0 0 8px rgba(0, 245, 212, 0.8);
+  animation-delay: 1.2s;
+}
+
+.sparkle3 {
+  top: 68%;
+  right: -4px;
+  font-size: 7px;
+  animation-delay: 2s;
+}
+
+@keyframes sparkleTwinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.2);
+  }
+}
+
+/* Sprite Container with layered drop-shadow */
+.spriteWrapper {
+  position: relative;
+  z-index: 1;
+  filter: 
+    drop-shadow(0 0 1px rgba(0, 0, 0, 0.95))
+    drop-shadow(0 6px 14px rgba(0, 0, 0, 0.75))
+    drop-shadow(0 0 16px rgba(139, 92, 246, 0.35));
+  transition: filter 0.2s ease;
+}
+
+.charButton:hover .spriteWrapper {
+  filter: 
+    drop-shadow(0 0 2px rgba(0, 0, 0, 0.95))
+    drop-shadow(0 8px 18px rgba(0, 0, 0, 0.85))
+    drop-shadow(0 0 22px rgba(139, 92, 246, 0.6));
+}

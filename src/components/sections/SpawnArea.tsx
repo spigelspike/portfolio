@@ -2,29 +2,28 @@
 // ============================================
 // SpawnArea — Hero Section
 // ============================================
-import { useEffect, useState, useRef } from "react";
+import { useRef, useSyncExternalStore } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { PlayIcon, DocIcon, ChatIcon } from "@/components/ui/PixelIcons";
-import { PERSONAL, SECTIONS } from "@/lib/constants";
+import { SECTIONS } from "@/lib/constants";
+import startJourneyImage from "../../../public/assets/startjourney.webp";
+import resumeImage from "../../../public/assets/resume.webp";
+import contactImage from "../../../public/assets/contactme.webp";
+
+const subscribeToBrowser = () => () => {};
+const getServerSafariSnapshot = () => false;
+
+function getSafariSnapshot() {
+  const userAgent = navigator.userAgent.toLowerCase();
+  return /^((?!chrome|android).)*safari/i.test(userAgent)
+    || /ipad|iphone|ipod/i.test(userAgent)
+    || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+}
 
 export default function SpawnArea() {
   const containerRef = useRef<HTMLElement>(null);
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [displayedRole, setDisplayedRole] = useState("");
-  const [isTyping, setIsTyping] = useState(true);
-  const [isMounted, setIsMounted] = useState(false);
-  const [isSafari, setIsSafari] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-    // Safari and iOS do not support webm alpha channel well, so we provide a webp fallback
-    const ua = navigator.userAgent.toLowerCase();
-    const isSafariBrowser = /^((?!chrome|android).)*safari/i.test(ua) || 
-                            /ipad|iphone|ipod/i.test(ua) || 
-                            (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-    setIsSafari(isSafariBrowser);
-  }, []);
+  // Safari and iOS do not support the WebM alpha asset reliably.
+  const isSafari = useSyncExternalStore(subscribeToBrowser, getSafariSnapshot, getServerSafariSnapshot);
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -146,8 +145,8 @@ export default function SpawnArea() {
               onClick={() => scrollToSection(SECTIONS.about)}
               className="focus:outline-none"
             >
-              <img
-                src="/assets/startjourney.webp?v=3"
+              <Image
+                src={startJourneyImage}
                 alt="Start Journey"
                 className="h-14 sm:h-20 lg:h-24 w-auto pixel-render drop-shadow-xl"
               />
@@ -160,8 +159,8 @@ export default function SpawnArea() {
               rel="noopener noreferrer"
               className="focus:outline-none"
             >
-              <img
-                src="/assets/resume.webp?v=3"
+              <Image
+                src={resumeImage}
                 alt="Resume"
                 className="h-14 sm:h-20 lg:h-24 w-auto pixel-render drop-shadow-xl"
               />
@@ -172,8 +171,8 @@ export default function SpawnArea() {
               onClick={() => scrollToSection(SECTIONS.contact)}
               className="focus:outline-none"
             >
-              <img
-                src="/assets/contactme.webp?v=3"
+              <Image
+                src={contactImage}
                 alt="Contact"
                 className="h-14 sm:h-20 lg:h-24 w-auto pixel-render drop-shadow-xl"
               />

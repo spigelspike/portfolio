@@ -9,6 +9,7 @@ type Particle = {
   color: string;
   angle: number;
   speed: number;
+  duration: number;
 };
 
 const COLORS = ["#00F5D4", "#FFD700", "#8B5CF6", "#FF007F"];
@@ -31,6 +32,7 @@ export default function PixelClick() {
           color: COLORS[Math.floor(Math.random() * COLORS.length)],
           angle: Math.random() * Math.PI * 2,
           speed: 40 + Math.random() * 60, // 40px to 100px travel distance
+          duration: 0.5 + Math.random() * 0.2,
         });
       }
 
@@ -39,7 +41,7 @@ export default function PixelClick() {
       // Remove particles after animation completes
       setTimeout(() => {
         setParticles((prev) => prev.filter(p => !newParticles.find(np => np.id === p.id)));
-      }, 600);
+      }, 750);
     };
 
     window.addEventListener("click", handleGlobalClick);
@@ -65,7 +67,7 @@ export default function PixelClick() {
                 scale: 0 
               }}
               transition={{ 
-                duration: 0.5 + Math.random() * 0.2, 
+                duration: p.duration,
                 ease: "easeOut" 
               }}
               className="absolute w-2 h-2"

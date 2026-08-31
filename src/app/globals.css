@@ -150,6 +150,15 @@ body {
   transform: translateY(6px);
 }
 
+.pixel-corners {
+  clip-path: polygon(
+    4px 0, calc(100% - 4px) 0,
+    100% 4px, 100% calc(100% - 4px),
+    calc(100% - 4px) 100%, 4px 100%,
+    0 calc(100% - 4px), 0 4px
+  );
+}
+
 .pixel-border-thick {
   border: 4px solid #111;
   border-radius: 8px;

@@ -2,8 +2,7 @@
 // ============================================
 // GameFooter — Bottom bar with game stats
 // ============================================
-import { motion } from "framer-motion";
-import { PERSONAL, SOCIAL_LINKS } from "@/lib/constants";
+import { PERSONAL } from "@/lib/constants";
 
 export default function GameFooter() {
   const scrollToTop = () => {

@@ -67,7 +67,27 @@ export const SKILLS: Skill[] = [
 ];
 
 // ── Projects ───────────────────────────────
+// ── Projects ───────────────────────────────
 export const PROJECTS: Project[] = [
+  {
+    id: 'kallanum-policeum',
+    title: 'Kallanum Policeum',
+    description: 'Browser-based real-time multiplayer social deduction game featuring voice chat, realtime synchronization, secure role assignment, and a fully serverless architecture.',
+    techStack: ['React', 'TypeScript', 'WebRTC', 'Supabase', 'Serverless'],
+    githubUrl: 'https://github.com/spigelspike/kallanum-policeum',
+    liveUrl: 'https://www.kallanumpoliceum.online',
+    thumbnail: '/assets/thumbnail/kallanum_policeum.webp',
+    icon: '🎮',
+  },
+  {
+    id: 'medarchive',
+    title: 'MedArchive',
+    description: 'Private, self-hosted family medical document vault & clinical AI assistant that turns paper prescriptions, diagnostic lab reports, and hospital bills into a searchable, grounded AI health vault with dual-stage OCR, local ChromaDB embeddings, and Groq LLaMA-3 citations.',
+    techStack: ['Python', 'FastAPI', 'React', 'ChromaDB', 'Groq LLaMA-3', 'Tesseract OCR'],
+    githubUrl: 'https://github.com/spigelspike/MedArchive',
+    thumbnail: '/assets/thumbnail/medarchive.webp',
+    icon: '🏥',
+  },
   {
     id: 'book2vision',
     title: 'Book2Vision',
@@ -78,14 +98,22 @@ export const PROJECTS: Project[] = [
     icon: '📚',
   },
   {
-    id: 'kallanum-policeum',
-    title: 'Kallanum Policeum',
-    description: 'Browser-based real-time multiplayer social deduction game featuring voice chat, realtime synchronization, secure role assignment, and a fully serverless architecture.',
-    techStack: ['React', 'TypeScript', 'WebRTC', 'Supabase', 'Serverless'],
-    githubUrl: 'https://github.com/spigelspike/kallanum-policeum',
-    liveUrl: 'https://www.kallanumpoliceum.online',
-    thumbnail: '/assets/thumbnail/kallanum_policeum.webp',
-    icon: '🎮',
+    id: 'omnivoice',
+    title: 'OmniVoice Malayalam Normalizer',
+    description: 'Open-source contribution that adds Malayalam text normalization support to the OmniVoice multilingual text-to-speech system, improving speech synthesis quality and pronunciation accuracy.',
+    techStack: ['Open Source', 'NLP', 'Text-to-Speech', 'Malayalam'],
+    githubUrl: 'https://github.com/spigelspike/OmniVoice',
+    thumbnail: '/assets/thumbnail/omni-voice.webp',
+    icon: '🗣️',
+  },
+  {
+    id: 'aclinsight-net',
+    title: 'ACLInsight-Net',
+    description: 'Deep learning MRI diagnostic system for ACL tear detection that leverages EfficientNet-B4, multi-plane MRI fusion, and Grad-CAM explainability to support medical image analysis and research.',
+    techStack: ['Deep Learning', 'PyTorch', 'EfficientNet-B4', 'Grad-CAM'],
+    githubUrl: 'https://github.com/spigelspike/aclinsight-net',
+    thumbnail: '/assets/thumbnail/acl.webp',
+    icon: '🧠',
   },
   {
     id: 'hopon',
@@ -115,15 +143,6 @@ export const PROJECTS: Project[] = [
     icon: '🧪',
   },
   {
-    id: 'aclinsight-net',
-    title: 'ACLInsight-Net',
-    description: 'Deep learning MRI diagnostic system for ACL tear detection that leverages EfficientNet-B4, multi-plane MRI fusion, and Grad-CAM explainability to support medical image analysis and research.',
-    techStack: ['Deep Learning', 'PyTorch', 'EfficientNet-B4', 'Grad-CAM'],
-    githubUrl: 'https://github.com/spigelspike/aclinsight-net',
-    thumbnail: '/assets/thumbnail/acl.webp',
-    icon: '🧠',
-  },
-  {
     id: 'pypath',
     title: 'PyPath',
     description: 'Fully interactive browser-based Python learning platform featuring live code execution through Pyodide, structured learning modules, coding challenges, gamification, interview preparation, and certification.',
@@ -132,15 +151,6 @@ export const PROJECTS: Project[] = [
     liveUrl: 'https://spigelspike.github.io/PyPath-Interactive-Python-Learning-Platform/',
     thumbnail: '/assets/thumbnail/pypath.webp',
     icon: '🐍',
-  },
-  {
-    id: 'omnivoice',
-    title: 'OmniVoice Malayalam Normalizer',
-    description: 'Open-source contribution that adds Malayalam text normalization support to the OmniVoice multilingual text-to-speech system, improving speech synthesis quality and pronunciation accuracy.',
-    techStack: ['Open Source', 'NLP', 'Text-to-Speech', 'Malayalam'],
-    githubUrl: 'https://github.com/spigelspike/OmniVoice',
-    thumbnail: '/assets/thumbnail/omni-voice.webp',
-    icon: '🗣️',
   },
   {
     id: 'kerala-waste',
@@ -153,6 +163,7 @@ export const PROJECTS: Project[] = [
     icon: '♻️',
   },
 ];
+
 
 // ── Achievements ───────────────────────────
 export const ACHIEVEMENTS: Achievement[] = [

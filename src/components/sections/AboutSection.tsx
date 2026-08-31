@@ -3,7 +3,6 @@
 // AboutSection — Character introduction
 // ============================================
 import { useRef } from "react";
-import PixelButton from "@/components/ui/PixelButton";
 import { PERSONAL, SECTIONS } from "@/lib/constants";
 
 export default function AboutSection() {

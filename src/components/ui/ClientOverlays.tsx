@@ -13,6 +13,11 @@ const PixelClick = dynamic(
   { ssr: false }
 );
 
+const RagCompanion = dynamic(
+  () => import("@/components/chat/RagCompanion"),
+  { ssr: false }
+);
+
 export default function ClientOverlays() {
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => {
@@ -29,6 +34,7 @@ export default function ClientOverlays() {
     <>
       <CustomCursor />
       <PixelClick />
+      <RagCompanion />
     </>
   );
 }

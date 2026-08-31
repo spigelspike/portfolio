@@ -19,6 +19,7 @@ const pressStart2P = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mhdshareef.com"),
   title: "Mohamed Shereef | Software Engineer & AI Builder",
   description:
     "Portfolio of Mohamed Shereef — Software Engineer, AI Builder, and recent IT graduate. Explore my projects, skills, and achievements in an interactive pixel-art world.",

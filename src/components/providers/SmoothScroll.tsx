@@ -4,7 +4,7 @@
 // ============================================
 import { ReactLenis, useLenis } from "lenis/react";
 import { useEffect, useRef } from "react";
-import { gsap, ScrollTrigger } from "@/lib/gsapConfig";
+import { gsap } from "@/lib/gsapConfig";
 
 export default function SmoothScrollProvider({
   children,

@@ -16,6 +16,11 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "s4.anilist.co" },
       { protocol: "https", hostname: "howlongtobeat.com" },
       { protocol: "https", hostname: "via.placeholder.com" }, // for the avatar fallback
+      {
+        protocol: "https",
+        hostname: "cdn.jsdelivr.net",
+        pathname: "/gh/devicons/devicon@latest/icons/**",
+      },
     ],
   },
 
