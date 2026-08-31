@@ -127,11 +127,21 @@ export default function ChatModal({ isOpen, onClose }: ChatModalProps) {
     }
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className={styles.backdrop} onClick={onClose} role="dialog" aria-modal="true">
-      <div className={styles.modalContainer} onClick={(e) => e.stopPropagation()}>
+    <div
+      className={styles.backdrop}
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      data-lenis-prevent
+    >
+      <div
+        className={styles.modalContainer}
+        onClick={(e) => e.stopPropagation()}
+        onWheel={(e) => e.stopPropagation()}
+        onTouchMove={(e) => e.stopPropagation()}
+        data-lenis-prevent
+      >
         {/* Header Bar */}
         <div className={styles.header}>
           <div className={styles.headerTitle}>
@@ -208,8 +218,18 @@ export default function ChatModal({ isOpen, onClose }: ChatModalProps) {
         </div>
 
         {/* Chat Body */}
-        <div className={styles.chatBody}>
-          <div className={styles.messageList}>
+        <div
+          className={styles.chatBody}
+          data-lenis-prevent
+          onWheel={(e) => e.stopPropagation()}
+          onTouchMove={(e) => e.stopPropagation()}
+        >
+          <div
+            className={styles.messageList}
+            data-lenis-prevent
+            onWheel={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
+          >
             {/* Show Welcome Card when no messages are sent yet */}
             {messages.length === 0 && (
               <div className={styles.welcomeCard}>
@@ -256,6 +276,7 @@ export default function ChatModal({ isOpen, onClose }: ChatModalProps) {
             )}
             <div ref={messagesEndRef} />
           </div>
+
 
           {/* Quick Prompts (2-Column Grid matching reference) */}
           <div className={styles.quickPromptsGrid}>

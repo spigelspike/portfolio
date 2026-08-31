@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  overscroll-behavior: contain;
 }
 
 .modalContainer {
@@ -24,6 +25,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  overscroll-behavior: contain;
   clip-path: polygon(
     10px 0, calc(100% - 10px) 0,
     100% 10px, 100% calc(100% - 10px),
@@ -41,6 +43,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  flex-shrink: 0;
 }
 
 .headerTitle {
@@ -135,6 +138,7 @@
   align-items: center;
   gap: 1.2rem;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
   clip-path: polygon(
     6px 0, calc(100% - 6px) 0,
     100% 6px, 100% calc(100% - 6px),
@@ -265,16 +269,22 @@
 /* Chat Body */
 .chatBody {
   flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   position: relative;
   padding: 0 1.15rem;
+  overscroll-behavior: contain;
 }
 
 .messageList {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
   padding: 0.75rem 0.25rem;
   display: flex;
   flex-direction: column;
@@ -310,6 +320,7 @@
   justify-content: space-between;
   gap: 1.2rem;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
   clip-path: polygon(
     6px 0, calc(100% - 6px) 0,
     100% 6px, 100% calc(100% - 6px),
@@ -420,6 +431,7 @@
   line-height: 1.5;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
   font-family: var(--font-inter), system-ui, sans-serif;
+  word-break: break-word;
 }
 
 .botMessage {
@@ -434,6 +446,7 @@
   line-height: 1.6;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
   font-family: var(--font-inter), system-ui, sans-serif;
+  word-break: break-word;
 }
 
 .botMessage strong {
@@ -464,6 +477,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 0.6rem;
   padding: 0.6rem 0 0.75rem;
+  flex-shrink: 0;
 }
 
 @media (max-width: 540px) {
@@ -518,6 +532,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex-shrink: 0;
 }
 
 .inputWrapper {
