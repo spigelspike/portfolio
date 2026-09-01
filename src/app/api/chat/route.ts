@@ -73,6 +73,18 @@ export async function POST(req: NextRequest) {
         });
       }
 
+      if (
+        lastUserMessage.includes("fibonacci") ||
+        lastUserMessage.includes("homework") ||
+        lastUserMessage.includes("fizzbuzz") ||
+        (lastUserMessage.includes("code for") && !lastUserMessage.includes("project"))
+      ) {
+        return NextResponse.json({
+          reply:
+            "🕵️‍♂️ **Caught you!** Trying to use Shareef's portfolio AI to solve your Fibonacci or homework? 😉\n\n0, 1, 1, 2, 3, 5, 8, 13... and the next number is the number of reasons you should hire Mohamed Shereef!\n\nIf you want to actually run Python code live in your browser, check out his project **[PyPath](https://spigelspike.github.io/PyPath-Interactive-Python-Learning-Platform/)** — or ask me about **Kallanum Policeum** and **MedArchive**!",
+        });
+      }
+
       return NextResponse.json({
         reply:
           "👋 **Hey there!** I'm Mohamed Shereef's AI companion. Ask me about his projects (like **Kallanum Policeum**, **MedArchive**, **Book2Vision**), his technical stack, or his hiring availability!",
