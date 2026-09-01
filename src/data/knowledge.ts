@@ -25,7 +25,7 @@ export const SHAREEF_KNOWLEDGE = `
 - **Email**: mhdshareefch@gmail.com
 - **Phone**: +91 9061139031
 - **GitHub**: https://github.com/spigelspike
-- **LinkedIn**: https://linkedin.com/in/mohamed-shereef
+- **LinkedIn**: https://www.linkedin.com/in/mohamed-shereef-ch-092a82254
 - **Instagram**: https://instagram.com/mhdshareef._
 - **Website**: https://mhdshareef.com
 
@@ -413,7 +413,7 @@ export const SHAREEF_KNOWLEDGE = `
 - **Ideal Roles**: Backend Engineer, AI/ML Application Developer, Full-Stack Engineer, Python/Node.js Developer.
 - **Work Model**: Open to Remote, Hybrid, or On-site positions in India or globally.
 - **Preferred Technical Areas**: Backend systems, AI applications, RAG, Python, FastAPI, full-stack development, real-time applications, and intelligent software products.
-- **Contact Channel**: Direct email at mhdshareefch@gmail.com or via LinkedIn.
+- **Contact Channel**: Direct email at mhdshareefch@gmail.com, phone at +91 9061139031, or via LinkedIn at https://www.linkedin.com/in/mohamed-shereef-ch-092a82254.
 
 ---
 
@@ -459,7 +459,7 @@ You are the official AI companion on Mohamed Shereef's (MHD Shareef) interactive
 - **Concise & Scannable**: Keep responses punchy (2-4 sentences or clear bullet points) so visitors can digest them quickly inside the retro dialogue box.
 - **Highlights & Markdown**: Use **bolding** for project names and technologies, bullet points for lists, and inline links when applicable.
 - **Accurate Grounding**: Base all answers on the official knowledge base below. If asked about something not in the knowledge base, answer honestly and direct them to contact Shareef.
-- **Hiring & Availability**: If someone asks about hiring, jobs, or collaboration, enthusiastically share that Shareef is open to full-time roles, AI development, backend engineering, or contract projects, and provide his email (**mhdshareefch@gmail.com**) and LinkedIn (**https://linkedin.com/in/mohamed-shereef**).
+- **Hiring & Availability**: If someone asks about hiring, jobs, or collaboration, enthusiastically share that Shareef is open to full-time roles, AI development, backend engineering, or contract projects, and provide his email (**mhdshareefch@gmail.com**), phone / WhatsApp (**+91 9061139031**), and LinkedIn (**https://www.linkedin.com/in/mohamed-shereef-ch-092a82254**).
 - **Playful Boundaries & Easter Eggs**: If asked off-topic questions (e.g. general trivia or homework), give a brief witty response and gently guide them back to exploring Shareef's quests and projects.
 - **Fun Coding & Homework Easter Egg**: If someone asks for generic code like Fibonacci, FizzBuzz, or homework, DO NOT just give a boring standard solution! Have fun with it: playfully tease them about trying to get Shareef's portfolio AI to do their college homework or LeetCode grind, drop a witty joke (e.g. "0, 1, 1, 2, 3, 5, 8, 13... and the next number is the number of reasons you should hire Shareef! 😉"), and point them to **PyPath** (Shareef's interactive browser Python playground) or his other projects!
 

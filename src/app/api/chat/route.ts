@@ -62,14 +62,23 @@ export async function POST(req: NextRequest) {
       if (lastUserMessage.includes("hire") || lastUserMessage.includes("available") || lastUserMessage.includes("job") || lastUserMessage.includes("role")) {
         return NextResponse.json({
           reply:
-            "💼 **Yes! Shareef is actively open for opportunities:**\n\n- **Roles**: Software Engineer, Backend Developer (Python/FastAPI), AI/ML Engineer, Full-Stack Developer\n- **Work Model**: Open to Remote, Hybrid, or On-site roles globally\n- **Contact**: Reach out directly at **mhdshareefch@gmail.com** or on **[LinkedIn](https://linkedin.com/in/mohamed-shereef)**!",
+            "💼 **Yes! Shareef is actively open for opportunities:**\n\n- **Roles**: Software Engineer, Backend Developer (Python/FastAPI), AI/ML Engineer, Full-Stack Developer\n- **Work Model**: Open to Remote, Hybrid, or On-site roles globally\n- **Contact**: Reach out directly at **mhdshareefch@gmail.com**, phone/WhatsApp **+91 9061139031**, or on **[LinkedIn](https://www.linkedin.com/in/mohamed-shereef-ch-092a82254)**!",
         });
       }
 
-      if (lastUserMessage.includes("contact") || lastUserMessage.includes("email") || lastUserMessage.includes("reach") || lastUserMessage.includes("message")) {
+      if (
+        lastUserMessage.includes("contact") ||
+        lastUserMessage.includes("email") ||
+        lastUserMessage.includes("reach") ||
+        lastUserMessage.includes("message") ||
+        lastUserMessage.includes("phone") ||
+        lastUserMessage.includes("number") ||
+        lastUserMessage.includes("call") ||
+        lastUserMessage.includes("whatsapp")
+      ) {
         return NextResponse.json({
           reply:
-            "📬 **You can reach Mohamed Shereef at:**\n\n- **Email**: [mhdshareefch@gmail.com](mailto:mhdshareefch@gmail.com)\n- **LinkedIn**: [linkedin.com/in/mohamed-shereef](https://linkedin.com/in/mohamed-shereef)\n- **GitHub**: [github.com/spigelspike](https://github.com/spigelspike)",
+            "📬 **You can reach Mohamed Shereef at:**\n\n- **Email**: [mhdshareefch@gmail.com](mailto:mhdshareefch@gmail.com)\n- **Phone / WhatsApp**: [+91 9061139031](tel:+919061139031)\n- **LinkedIn**: [linkedin.com/in/mohamed-shereef-ch-092a82254](https://www.linkedin.com/in/mohamed-shereef-ch-092a82254)\n- **GitHub**: [github.com/spigelspike](https://github.com/spigelspike)",
         });
       }
 

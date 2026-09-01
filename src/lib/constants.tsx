@@ -18,7 +18,7 @@ export const PERSONAL = {
   email: 'mhdshareefch@gmail.com',
   phone: '+91 9061139031',
   github: 'https://github.com/spigelspike',
-  linkedin: 'https://linkedin.com/in/mohamed-shereef',
+  linkedin: 'https://www.linkedin.com/in/mohamed-shereef-ch-092a82254',
   instagram: 'https://instagram.com/mhdshareef._',
   location: 'Kerala, India',
 } as const;
