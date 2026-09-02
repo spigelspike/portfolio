@@ -4,6 +4,7 @@ import "./globals.css";
 import SmoothScrollProvider from "@/components/providers/SmoothScroll";
 import CRTOverlay from "@/components/ui/CRTOverlay";
 import ClientOverlays from "@/components/ui/ClientOverlays";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -62,6 +63,7 @@ export default function RootLayout({
         <ClientOverlays />
         <CRTOverlay />
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <Analytics />
       </body>
     </html>
   );
